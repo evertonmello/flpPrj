@@ -1,5 +1,5 @@
-<!-- <p-menu #menu [model]="items"></p-menu>
- --> 
+<p-menu #menu [model]="items"></p-menu>
+
 <!-- <p-table [columns]="cols" [value]="cars"  value="Submit" >
   <ng-template pTemplate="header"  let-columns>
     <tr>
@@ -78,8 +78,8 @@
 
 
 
-<div class="main">
-    <h3 class="first">Cadastro de Itens</h3>
+<!-- <div class="main">
+    <h3 class="ui-widget">Cadastro de Itens</h3>
     <div class="ui-g ui-fluid">
         <div class="ui-g-12 ui-md-4">
             <div class="ui-inputgroup">            
@@ -87,10 +87,11 @@
             </div>
         </div>
         <div class="ui-g-12 ui-md-4">
-            <div class="ui-inputgroup">                        
-                <p-dropdown [options]="units" placeholder="Unidade de medida" [(ngModel)]="units"></p-dropdown>                           
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">$</span>
+                <input type="text" pInputText placeholder="Preço">               
             </div>
-        </div>
+        </div>          
         <div class="ui-g-12 ui-md-4">
             <div class="ui-inputgroup">                        
                 <input type="text" pInputText placeholder="Quantidade">                           
@@ -98,23 +99,22 @@
         </div>    
     </div>
     <div class="ui-g ui-fluid">
-        <div class="ui-g-12 ui-md-2">
-            <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon">$</span>
-                <input type="text" pInputText placeholder="Preço">               
+        <div class="ui-g-12 ui-md-3">
+            <div class="ui-inputgroup">                        
+                <p-dropdown [options]="units" placeholder="Unidade de medida" [(ngModel)]="units"></p-dropdown>                           
             </div>
-        </div>  
+        </div>
         <div class="ui-g-12 ui-md-2">
             <div class="ui-inputgroup ui-widget">                 
                 <p-checkbox [(ngModel)]="check" label="Produto Perecível" binary="true" ></p-checkbox>                          
             </div>
         </div>
-        <div class="ui-g-12 ui-md-4">
+        <div class="ui-g-12 ui-md-2">
             <div class="ui-inputgroup">
                 <p-calendar placeholder="Data de validade" ></p-calendar>                                              
             </div>
         </div>      
-        <div class="ui-g-12 ui-md-4">
+        <div class="ui-g-12 ui-md-3">
             <div class="ui-inputgroup">
                 <p-calendar placeholder="Data de fabricação"></p-calendar>                                              
             </div>
@@ -124,4 +124,4 @@
     <p-button label="Salvar" class="btn"></p-button>
     <p-button label="Cancelar" class="btn" ></p-button>
     
-</div>
+</div> -->
