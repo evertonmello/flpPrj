@@ -16,10 +16,14 @@ import { MenuItem } from 'primeng/api';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { ListComponent } from './list/list.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ListComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
