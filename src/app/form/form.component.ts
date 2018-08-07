@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import {ConfirmationService} from 'primeng/api';
+import {MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+
+
 
 @Component({
   selector: 'form',
@@ -8,13 +14,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
-
-
+  constructor(private route: ActivatedRoute, private router: Router,
+              private confirmationService: ConfirmationService,private messageService:MessageService) { }
+  
   selectedItem: any;
-  public itens = [];
-  public newItem = true;
-  public item = {
+  itens = [];
+  newItem = true;
+  item = {
     id: 0,
     name: '',
     unit: 0,
@@ -29,7 +35,7 @@ export class FormComponent implements OnInit {
     { label: 'Quilograma', value: 1 },
     { label: 'Unidade', value: 2 },
   ]
-  ngOnInit() {
+  ngOnInit() {    
     this.route
       .queryParams
       .subscribe(params => {
@@ -41,16 +47,22 @@ export class FormComponent implements OnInit {
     this.itens = window.localStorage['itens'] ? JSON.parse(window.localStorage['itens']) : [];
   }
 
-  cancel() {
+  cancel() {    
     this.router.navigate(['/listagem']);
   }
 
   delete() {
+    try {
+      this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+    } catch (error) {
+      this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+    }
     var index = this.item.id
     this.itens = this.itens.filter((val, i) => val.id != index);
     window.localStorage['itens'] = JSON.stringify(this.itens)
     this.item = null;
     this.router.navigate(['/listagem']);
+    this.messageService.add({severity:'success', summary: 'Success Message', detail:'Order submitted'});
   }
 
   save() {
@@ -66,4 +78,14 @@ export class FormComponent implements OnInit {
     this.item = null;
     this.router.navigate(['/listagem']);
   }
+
+  confirm() { 
+       
+    this.confirmationService.confirm({
+        message: 'Tem certeza que deseja excluir este item?',
+        accept: () => {
+            this.delete();
+        }
+    });
+}
 }

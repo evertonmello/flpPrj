@@ -16,6 +16,11 @@ import {MenuModule} from 'primeng/menu';
 import {DialogModule} from 'primeng/dialog';
 import {TableModule} from 'primeng/table';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
+
 
 import { AppComponent } from './app.component';
 import {ListComponent } from './list/list.component'
@@ -37,13 +42,15 @@ const appRoutes: Routes = [
     BrowserModule,
     CalendarModule,
     CurrencyMaskModule,
-    NgxMaskModule,
+    NgxMaskModule,   
+    ToastModule, 
     DialogModule,
     AccordionModule, 
     FormsModule,
-    ButtonModule,
+    ButtonModule,    
     MenuModule,
     CheckboxModule,
+    ConfirmDialogModule,
     InputTextModule,
     InputMaskModule,
     TableModule,
@@ -54,7 +61,7 @@ const appRoutes: Routes = [
       appRoutes
     )  
   ],
-  providers: [],
+  providers: [ConfirmationService,MessageService,ToastModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

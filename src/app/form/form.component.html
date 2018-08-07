@@ -64,8 +64,9 @@
 </div>
 <p-footer>
     <div class="ui-dialog-buttonpane ui-helper-clearfix">
-        <button *ngIf="!newItem" type="button" pButton icon="fa fa-check" (click)="delete()" label="Excluir"></button>        
+        <button *ngIf="!newItem" type="button" pButton icon="fa fa-check" (click)="confirm()" label="Excluir"></button>        
         <button type="button" pButton icon="fa fa-close" (click)="cancel()" label="Cancelar"></button>
         <button type="button" pButton icon="fa fa-check" (click)="save()" label="Salvar"></button>
     </div>
 </p-footer>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>

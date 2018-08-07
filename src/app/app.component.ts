@@ -17,7 +17,8 @@ export class AppComponent {
   public items;  
   public check = false;
 
-  ngOnInit() {    
+  ngOnInit() {
+        
     this.items = [{
       label: 'Menu',
       icon: 'pi-home',
@@ -35,4 +36,5 @@ export class AppComponent {
   validate(){
     console.log("!")
   }
+
 }

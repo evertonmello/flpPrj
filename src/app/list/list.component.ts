@@ -23,7 +23,6 @@ export class ListComponent implements OnInit {
     ]
     public itens = window.localStorage['itens'] ? JSON.parse(window.localStorage['itens']) : []
 
-
     ngOnInit() {
         this.cols = [
             { field: 'name', header: 'Nome' },
@@ -47,5 +46,4 @@ export class ListComponent implements OnInit {
         this.router.navigate(['/cadastro'], { queryParams: { item: JSON.stringify(event.data) } })
                
     }
-
 }
