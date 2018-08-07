@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'form',
@@ -7,13 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   public item = {
     id:0,
     name:'',
     unit: 0,
-    selected : null,
     amount: 0,
     price: 0,
     prshbl:false,
@@ -27,6 +27,10 @@ export class FormComponent implements OnInit {
     {label:'Unidade', value: 2},
   ]
   ngOnInit() {
+  }
+
+  cancel(){
+    this.router.navigate(['/listagem']);    
   }
 
   save(){

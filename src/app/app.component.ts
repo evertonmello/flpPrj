@@ -23,7 +23,7 @@ export class AppComponent {
       icon: 'pi-home',
       items: [
         { label: 'Cadastrar', icon: 'pi pi-pencil', command:(click)=> this.setPage('cadastro') },
-        { label: 'Listagem', icon: 'pi pi-align-left', command:(click)=> this.setPage('lisagem') }
+        { label: 'Listagem', icon: 'pi pi-align-left', command:(click)=> this.setPage('listagem') }
       ]
     }];
   }

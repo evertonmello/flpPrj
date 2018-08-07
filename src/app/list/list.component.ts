@@ -1,77 +1,68 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+    selector: 'list',
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
 
-  displayDialog: boolean;
-  item: any = {};
-  selectedItem: any;
-  newItem: boolean;
-  cols: any[];
+    displayDialog: boolean;
+    item: any = {};
+    selectedItem: any;
+    newItem: boolean;
+    cols: any[];
 
-  constructor() { }
-  public units = [
-    {label:'Litro', value: 0},
-    {label:'Quilograma', value: 1},
-    {label:'Unidade', value: 2},
-  ]
-  public itens = JSON.parse(window.localStorage['itens'])
-/*   public cars = [
-    { name: '', unit: 1231,  amount: 1233, price:'dadas', perishable:false, valDate: new Date().toLocaleDateString(), fabDate: new Date().toLocaleDateString()},
-    { name: 'dsa', unit: 1231,  amount: 1233, price:'dadas', perishable:false, valDate: new Date().toLocaleDateString(), fabDate: new Date().toLocaleDateString()},
-    { name: 'dsa', unit: 1231,  amount: 1233, price:'dadas', perishable:false, valDate: new Date().toLocaleDateString(), fabDate: new Date().toLocaleDateString()},
-    { name: 'dsa', unit: 1231,  amount: 1233, price:'dadas', perishable:false, valDate: new Date().toLocaleDateString(), fabDate: new Date().toLocaleDateString()},
-    { name: 'dsa', unit: 1231,  amount: 1233, price:'dadas', perishable:false, valDate: new Date().toLocaleDateString(), fabDate: new Date().toLocaleDateString()},
-    { name: 'dsa', unit: 1231,  amount: 1233, price:'dadas', perishable:false, valDate: new Date().toLocaleDateString(), fabDate: new Date().toLocaleDateString()},
-    { name: 'dsa', unit: 1231,  amount: 1233, price:'dadas', perishable:false, valDate: new Date().toLocaleDateString(), fabDate: new Date().toLocaleDateString()},
-  ];
-   */
+    constructor() { }
+    public units = [
+        { label: 'Litro', value: 0 },
+        { label: 'Quilograma', value: 1 },
+        { label: 'Unidade', value: 2 },
+    ]
+    public itens = window.localStorage['itens'] ? JSON.parse(window.localStorage['itens']) : []
 
-  ngOnInit() {
-    this.cols = [
-        { field: 'name', header: 'Nome' },
-        { field: 'unit', header: 'Unidade de Medida' },
-        { field: 'amount', header: 'Quantidade' },
-        { field: 'price', header: 'Preço' },
-        { field: 'perishable', header: 'É perecivel' },
-        { field: 'valDate', header: 'Data de validade' },
-        { field: 'fabDate', header: 'Data de fabricação' },
-    ];
-  }
 
-  showDialogToAdd() {
-    this.newItem = true;
-    this.item = {};
-    this.displayDialog = true;
-}
+    ngOnInit() {
+        this.cols = [
+            { field: 'name', header: 'Nome' },
+            { field: 'unit', header: 'Unidade de Medida' },
+            { field: 'amount', header: 'Quantidade' },
+            { field: 'price', header: 'Preço' },
+            { field: 'perishable', header: 'É perecivel' },
+            { field: 'valDate', header: 'Data de validade' },
+            { field: 'fabDate', header: 'Data de fabricação' },
+        ];
+    }
 
-save() {
-    let itens = [...this.itens];
-    
-    if (this.newItem)
-        itens.push(this.item);
-    else
-        itens[this.itens.indexOf(this.selectedItem)] = this.item;
+    showDialogToAdd() {
+        this.newItem = true;
+        this.item = {};
+        this.displayDialog = true;
+    }
 
-    this.itens = itens;
-    this.item = null;
-    this.displayDialog = false;
-}
+    save() {
+        let itens = [...this.itens];
 
-delete() {
-    let index = this.itens.indexOf(this.selectedItem);
-    this.itens = this.itens.filter((val, i) => i != index);
-    this.item = null;
-    this.displayDialog = false;
-}
+        if (this.newItem)
+            itens.push(this.item);
+        else
+            itens[this.itens.indexOf(this.selectedItem)] = this.item;
 
-onRowSelect(event) {
-    this.newItem = false;
-    this.item = event.data;
-    this.displayDialog = true;
-}
+        this.itens = itens;
+        this.item = null;
+        this.displayDialog = false;
+    }
+
+    delete() {
+        let index = this.itens.indexOf(this.selectedItem);
+        this.itens = this.itens.filter((val, i) => i != index);
+        this.item = null;
+        this.displayDialog = false;
+    }
+
+    onRowSelect(event) {
+        this.newItem = false;
+        this.item = event.data;
+        this.displayDialog = true;
+    }
 }

@@ -1,50 +1,65 @@
 <router-outlet style="width: 100%"></router-outlet>
-<div class="main">
-  <h3 class="ui-widget">Cadastro de Itens</h3>
-  <div class="ui-g ui-fluid">
-      <div class="ui-g-12 ui-md-4">
-          <div class="ui-inputgroup">            
-              <input type="text" [(ngModel)]="item.name" pInputText placeholder="Nome do item">         
-          </div>
-      </div>
-      <div class="ui-g-12 ui-md-2">
-          <div class="ui-inputgroup">
-                <p-dropdown [options]="units" placeholder="Unidade de medida" [(ngModel)]="item.unit"></p-dropdown>                           
-          </div>
-      </div>          
-      <div class="ui-g-12 ui-md-2">
-          <div class="ui-inputgroup">                        
-              <input type="text" [(ngModel)]="item.amount" pInputText placeholder="Quantidade"> 
-          </div>
-      </div>  
-      <div class="ui-g-12 ui-md-2">
-            <div class="ui-inputgroup">   
-                  <span class="ui-inputgroup-addon">$</span>
-                  <p-inputMask type="text"  [(ngModel)]="val"  mask="{{5000 | currency : 'BRL' : true}}" ></p-inputMask>
-            </div>
-
-        </div>  
-        <div class="ui-g-12 ui-md-2">
-            <div class="ui-inputgroup ui-widget">                 
-                <p-checkbox [(ngModel)]="item.prshbl" label="Produto Perecível" binary="true" ></p-checkbox>                          
-            </div>
+<div class="ui-g ui-fluid" *ngIf="item">
+    <div class="ui-g-12">
+        <div class="ui-g-4">
+            <label for="vin">Nome</label>
         </div>
-  </div>
-  <div class="ui-g ui-fluid">
-      <div class="ui-g-12 ui-md-2">
-          <div class="ui-inputgroup">
-              <p-calendar placeholder="Data de validade" ></p-calendar>                                              
-          </div>
-      </div>      
-      <div class="ui-g-12 ui-md-3">
-          <div class="ui-inputgroup">
-              <p-calendar placeholder="Data de fabricação"></p-calendar>                                              
-          </div>
-      </div>      
-  </div>
-  <div class="btnContainer">
-        <p-button label="Cancelar" class="btn" ></p-button>
-        <p-button label="Salvar" class="btn" (click)="save()"></p-button>
-  </div>
-  
-</div> 
+        <div class="ui-g-8">
+            <input pInputText id="name" [(ngModel)]="item.name" />
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="ui-g-4">
+            <label for="year">Unidade de Medida</label>
+        </div>
+        <div class="ui-g-8">
+            <input pInputText id="unit" [(ngModel)]="item.unit" />
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="ui-g-4">
+            <label for="brand">Quantidade</label>
+        </div>
+        <div class="ui-g-8">
+            <input pInputText id="amount" [(ngModel)]="item.amount" />
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="ui-g-4">
+            <label for="color">Preço</label>
+        </div>
+        <div class="ui-g-8">
+            <input pInputText id="price" [(ngModel)]="item.price" />
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="ui-g-4">
+            <label for="color">É Perecivel</label>
+        </div>
+        <div class="ui-g-8">
+            <input pInputText id="prshbl" [(ngModel)]="item.prshbl" />
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="ui-g-4">
+            <label for="color">Data de validade</label>
+        </div>
+        <div class="ui-g-8">
+            <input pInputText id="valDate" [(ngModel)]="item.valDate" />
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="ui-g-4">
+            <label for="color">Data de fabricação</label>
+        </div>
+        <div class="ui-g-8">
+            <input pInputText id="fabDate" [(ngModel)]="item.fabDate" />
+        </div>
+    </div>
+</div>
+<p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+        <button type="button" pButton icon="fa fa-close" (click)="cancel()" label="Cancelar"></button>
+        <button type="button" pButton icon="fa fa-check" (click)="save()" label="Salvar"></button>
+    </div>
+</p-footer>
