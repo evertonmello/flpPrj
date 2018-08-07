@@ -15,14 +15,14 @@
       <div class="ui-g-12 ui-md-2">
           <div class="ui-inputgroup">                        
               <input type="text" [(ngModel)]="item.amount" pInputText placeholder="Quantidade"> 
-              <span class="ui-inputgroup-addon">$</span>
           </div>
       </div>  
       <div class="ui-g-12 ui-md-2">
             <div class="ui-inputgroup">   
                   <span class="ui-inputgroup-addon">$</span>
-                  <input type="text" pInputText placeholder="Preço">                        
+                  <p-inputMask type="text"  [(ngModel)]="val"  mask="{{5000 | currency : 'BRL' : true}}" ></p-inputMask>
             </div>
+
         </div>  
         <div class="ui-g-12 ui-md-2">
             <div class="ui-inputgroup ui-widget">                 
