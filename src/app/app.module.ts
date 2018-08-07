@@ -11,6 +11,7 @@ import {AccordionModule} from 'primeng/accordion';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputMaskModule} from 'primeng/inputmask';
 import {MenuModule} from 'primeng/menu';
+import {DialogModule} from 'primeng/dialog';
 import {TableModule} from 'primeng/table';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     CalendarModule,
+    DialogModule,
     AccordionModule, 
     FormsModule,
     ButtonModule,

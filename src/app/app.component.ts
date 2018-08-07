@@ -19,14 +19,13 @@ export class AppComponent {
 
   ngOnInit() {    
     this.items = [{
-      label: 'Home',
+      label: 'Menu',
       icon: 'pi-home',
       items: [
         { label: 'Cadastrar', icon: 'pi pi-pencil', command:(click)=> this.setPage('cadastro') },
         { label: 'Listagem', icon: 'pi pi-align-left', command:(click)=> this.setPage('lisagem') }
       ]
     }];
-
   }
 
   setPage(page){
