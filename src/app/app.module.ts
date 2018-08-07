@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 
+import {NgxMaskModule} from 'ngx-mask'
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     BrowserModule,
     CalendarModule,
     CurrencyMaskModule,
+    NgxMaskModule,
     DialogModule,
     AccordionModule, 
     FormsModule,
@@ -47,6 +49,7 @@ const appRoutes: Routes = [
     TableModule,
     DropdownModule,
     BrowserAnimationsModule,
+    NgxMaskModule.forRoot(),
     RouterModule.forRoot(
       appRoutes
     )  

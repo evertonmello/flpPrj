@@ -19,73 +19,10 @@
                 </td>
             </tr>
         </ng-template>
-    </p-table>
-    
-    <p-dialog header="Item Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="700">
-            <div class="ui-g ui-fluid" *ngIf="item">
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="vin">Nome</label>
-                        </div>
-                        <div class="ui-g-3">
-                            <input pInputText id="name" [(ngModel)]="item.name" />
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="year">Unidade de Medida</label>
-                        </div>
-                        <div class="ui-g-4">            
-                            <p-dropdown [options]="units" placeholder="Unidade de medida" id="unit" [(ngModel)]="item.unit"></p-dropdown>                                       
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="brand">Quantidade</label>
-                        </div>
-                        <div class="ui-g-2">
-                            <input pInputText id="amount" [(ngModel)]="item.amount" />
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="color">Preço</label>
-                        </div>
-                        <div class="ui-g-2">            
-                            <input pInputText currencyMask [(ngModel)]="item.price" [options]="{ prefix: '', thousands: '.', decimal: ',' }" class="iptPrice"/>
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="color">É Perecivel</label>
-                        </div>
-                        <div class="ui-g-4">            
-                            <p-checkbox [(ngModel)]="item.prshbl" label="Produto Perecível" binary="true" ></p-checkbox>                          
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="color">Data de validade</label>
-                        </div>
-                        <div class="ui-g-3">            
-                            <p-calendar id="valDate" placeholder="Data de validade" [(ngModel)]="item.valDate" ></p-calendar>                                              
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="color">Data de fabricação</label>
-                        </div>
-                        <div class="ui-g-3">
-                            <p-calendar id="fabDate" placeholder="Data de fabricação" [(ngModel)]="item.fabDate"></p-calendar>                                                          
-                        </div>
-                    </div>
+        <ng-template pTemplate="summary" let-rowData>
+                <div style="text-align:left">
+                    <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
                 </div>
-                <p-footer>
-                    <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                        <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Excluir"></button>
-                        <button  type="button" pButton icon="fa fa-close" (click)="cancel()" label="Cancelar"></button>
-                        <button type="button" pButton icon="fa fa-check" (click)="save()" label="Salvar"></button>
-                    </div>
-                </p-footer>
-    </p-dialog>
+        </ng-template>  
+    </p-table>
 </div>
