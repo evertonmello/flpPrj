@@ -12,18 +12,23 @@ import {InputTextModule} from 'primeng/inputtext';
 import {InputMaskModule} from 'primeng/inputmask';
 import {MenuModule} from 'primeng/menu';
 import {TableModule} from 'primeng/table';
-import { MenuItem } from 'primeng/api'; 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
-import { FormComponent } from './form/form.component';
+import {ListComponent } from './list/list.component'
+import {FormComponent } from './form/form.component'
+
+
+const appRoutes: Routes = [
+  { path: 'lisagem', component: ListComponent },
+  { path: 'cadastro',      component: FormComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    FormComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,10 @@ import { FormComponent } from './form/form.component';
     InputMaskModule,
     TableModule,
     DropdownModule,
-    BrowserAnimationsModule     
+    BrowserAnimationsModule,
+    RouterModule.forRoot(
+      appRoutes
+    )  
   ],
   providers: [],
   bootstrap: [AppComponent]
