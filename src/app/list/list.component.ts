@@ -34,6 +34,11 @@ export class ListComponent implements OnInit {
         this.router.navigate(['/cadastro'])
     }
 
+
+    parseDate(date){
+        return new Date(date).toLocaleDateString('pt')
+    }
+
     onRowSelect(event) {
         this.newItem = false;
         this.item = event.data;

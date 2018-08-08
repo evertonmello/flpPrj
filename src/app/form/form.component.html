@@ -54,7 +54,7 @@
                 <label for="color">Data de validade</label>
             </div>
             <div class="ui-g-3">
-                <p-calendar id="valDate" placeholder="Data de validade" [(ngModel)]="item.valDate"></p-calendar>
+                <p-calendar id="valDate" placeholder="Data de validade" [(ngModel)]="item.valDate" dateFormat="dd/mm/yy"></p-calendar>
                 <p-message  *ngIf="!item.valDate && showError &&  item.prshbl"  severity="error" text="Este campo é obrigatório" ></p-message>                                
             </div>
         </div>
@@ -63,7 +63,7 @@
                 <label for="color">Data de fabricação</label>
             </div>
             <div class="ui-g-3">
-                <p-calendar id="fabDate" placeholder="Data de fabricação" [(ngModel)]="item.fabDate"></p-calendar>
+                <p-calendar id="fabDate" placeholder="Data de fabricação" [(ngModel)]="item.fabDate"  dateFormat="dd/mm/yy"></p-calendar>
                 <p-message  *ngIf="!item.fabDate && showError"  severity="error" text="Este campo é obrigatório" ></p-message>                
             </div>
         </div>

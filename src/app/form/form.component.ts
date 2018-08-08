@@ -24,9 +24,11 @@ export class FormComponent implements OnInit {
     amount: null,
     price: 0,
     prshbl: false,
-    valDate: new Date().toLocaleDateString(),
-    fabDate: new Date().toLocaleDateString()
+    valDate: new Date(),
+    fabDate: new Date()
   }
+  value: Date;
+
   public units = [
     { label: 'Litro', value: 'Litro' },
     { label: 'Quilograma', value: 'Quilograma' },
@@ -46,7 +48,9 @@ export class FormComponent implements OnInit {
 
   setUpItem(item) {
     if (item) {
-      this.item = JSON.parse(item)
+      this.item = JSON.parse(item)            
+      this.item.fabDate = new Date(this.item.fabDate)
+      this.item.valDate = new Date(this.item.valDate)      
       this.newItem = false;
     }
   }
@@ -75,7 +79,7 @@ export class FormComponent implements OnInit {
         this.itens = this.itens.filter((val, i) => val.id != index);
       }else{
         this.item.id = Math.floor(Math.random() * 100);
-      }
+      }      
 
       this.itens.push(this.item)
       window.localStorage['itens'] = JSON.stringify(this.itens)
@@ -96,7 +100,7 @@ export class FormComponent implements OnInit {
     });
   }
 
-  validate(){  
+  validate(){      
     var save = true
     for (var property in this.item) {        
       if(!this.item[property] && property != 'id'){
@@ -108,7 +112,6 @@ export class FormComponent implements OnInit {
     }
 
     this.showError = true;
-
-  }
+  } 
   
 }
