@@ -9,18 +9,13 @@ import { Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
-    displayDialog: boolean;
     item: any = {};
     selectedItem: any;
     newItem: boolean;
     cols: any[];
 
     constructor(private router: Router) { }
-    public units = [
-        { label: 'Litro', value: 0 },
-        { label: 'Quilograma', value: 1 },
-        { label: 'Unidade', value: 2 },
-    ]
+    
     public itens = window.localStorage['itens'] ? JSON.parse(window.localStorage['itens']) : []
 
     ngOnInit() {
@@ -35,14 +30,13 @@ export class ListComponent implements OnInit {
         ];
     }
 
-    showDialogToAdd() {
+    edit() {
         this.router.navigate(['/cadastro'])
     }
 
     onRowSelect(event) {
         this.newItem = false;
         this.item = event.data;
-        this.displayDialog = true;
         this.router.navigate(['/cadastro'], { queryParams: { item: JSON.stringify(event.data) } })
                
     }

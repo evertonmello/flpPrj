@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
   item = {
     id: 0,
     name: '',
-    unit: 0,
+    unit: '',
     amount: 0,
     price: 0,
     prshbl: false,
@@ -28,9 +28,9 @@ export class FormComponent implements OnInit {
     fabDate: new Date().toLocaleDateString()
   }
   public units = [
-    { label: 'Litro', value: 0 },
-    { label: 'Quilograma', value: 1 },
-    { label: 'Unidade', value: 2 },
+    { label: 'Litro', value: 'Litro' },
+    { label: 'Quilograma', value: 'Quilograma' },
+    { label: 'Unidade', value: 'Unidade' },
   ]
 
   ngOnInit() {    
@@ -78,9 +78,7 @@ export class FormComponent implements OnInit {
       this.messageService.add({severity:'success', summary:'Sucesso!', detail:'Item salvo'});
     } catch (error) {
       this.messageService.add({severity:'error', summary:'Ops!', detail:'Algo deu errado: ' + error});
-      
     }
-    
   }
 
   confirm() { 

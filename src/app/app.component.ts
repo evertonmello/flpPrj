@@ -17,6 +17,10 @@ export class AppComponent {
   public check = false;
 
   ngOnInit() {
+    this.setUpMenu();    
+  }
+
+  setUpMenu(){
     this.items = [{
       label: 'Menu',
       icon: 'pi-home',
