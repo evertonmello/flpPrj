@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder}   from '@angular/forms';
 
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
@@ -13,12 +14,14 @@ export class FormComponent implements OnInit {
 
   selectedItem: any;
   itens = window.localStorage['itens'] ? JSON.parse(window.localStorage['itens']) : [];
-  newItem = true;  
+  newItem = true; 
+  showError = false; 
+  form:FormGroup;
   item = {
     id: 0,
     name: '',
     unit: '',
-    amount: 0,
+    amount: null,
     price: 0,
     prshbl: false,
     valDate: new Date().toLocaleDateString(),
@@ -31,7 +34,7 @@ export class FormComponent implements OnInit {
   ]
 
   constructor(private route: ActivatedRoute, private router: Router,
-    private confirmationService: ConfirmationService, private messageService: MessageService) {
+    private confirmationService: ConfirmationService, private messageService: MessageService, private formbuilder:FormBuilder ) {
   }
 
 
@@ -93,4 +96,19 @@ export class FormComponent implements OnInit {
     });
   }
 
+  validate(){  
+    var save = true
+    for (var property in this.item) {        
+      if(!this.item[property] && property != 'id'){
+        save = false
+      }       
+    }
+    if(save){
+      this.save()
+    }
+
+    this.showError = true;
+
+  }
+  
 }

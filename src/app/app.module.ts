@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import {NgxMaskModule} from 'ngx-mask'
 import { CurrencyMaskModule } from "ng2-currency-mask";
@@ -20,6 +20,8 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 
 import { AppComponent } from './app.component';
@@ -29,7 +31,7 @@ import {FormComponent } from './form/form.component';
 
 const appRoutes: Routes = [
   { path: 'listagem', component: ListComponent },
-  { path: 'cadastro',      component: FormComponent }
+  { path: 'cadastro', component: FormComponent }
 ];
 
 @NgModule({
@@ -44,10 +46,13 @@ const appRoutes: Routes = [
     CurrencyMaskModule,
     NgxMaskModule,   
     ToastModule, 
+    ReactiveFormsModule,
     DialogModule,
     AccordionModule, 
+    MessageModule,
     FormsModule,
-    ButtonModule,    
+    ButtonModule,   
+    MessagesModule, 
     MenuModule,
     CheckboxModule,
     ConfirmDialogModule,

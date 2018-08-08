@@ -1,12 +1,13 @@
 <router-outlet style="width: 100%"></router-outlet>
-<div class="main">
+<div class="main" >        
     <div class="ui-g ui-fluid" *ngIf="item">
         <div class="ui-g-12">
             <div class="ui-g-4">
                 <label for="vin">Nome</label>
             </div>
             <div class="ui-g-3">
-                <input pInputText id="name" autofocus maxlength="50" [(ngModel)]="item.name"  style="text-align:left;" />
+                <input pInputText id="name"[(ngModel)]="item.name"  autofocus maxlength="50"   style="text-align:left;" class="ng-dirty ng-invalid"  [style]="{'width':'75px'}" />
+                <p-message *ngIf="!item.name && showError"  severity="error" text="Este campo é obrigatório" ></p-message>                
             </div>
         </div>
         <div class="ui-g-12">
@@ -15,6 +16,7 @@
             </div>
             <div class="ui-g-4">
                 <p-dropdown [options]="units" placeholder="Unidade de medida" id="unit" [(ngModel)]="item.unit"></p-dropdown>
+                <p-message  *ngIf="!item.unit && showError" severity="error" text="Este campo é obrigatório" ></p-message>
             </div>
         </div>
         <div class="ui-g-12">
@@ -31,10 +33,11 @@
         </div>
         <div class="ui-g-12">
             <div class="ui-g-4">
-                <label for="color">Preço</label>
+                <label for="color">Preço</label>                                
             </div>
             <div class="ui-g-2">
                 <input pInputText currencyMask  [(ngModel)]="item.price" [options]="{ prefix: '', thousands: '.', decimal: ',' }" class="iptPrice" />
+                <p-message  *ngIf="!item.price && showError" severity="error" text="Este campo é obrigatório" ></p-message>
             </div>
         </div>
         <div class="ui-g-12">
@@ -43,6 +46,7 @@
             </div>
             <div class="ui-g-4">
                 <p-checkbox [(ngModel)]="item.prshbl" label="Produto Perecível" binary="true"></p-checkbox>
+                <p-message *ngIf="!item.prshbl && showError" severity="error" text="Este campo é obrigatório" ></p-message>                
             </div>
         </div>
         <div class="ui-g-12">
@@ -51,6 +55,7 @@
             </div>
             <div class="ui-g-3">
                 <p-calendar id="valDate" placeholder="Data de validade" [(ngModel)]="item.valDate"></p-calendar>
+                <p-message  *ngIf="!item.valDate && showError &&  item.prshbl"  severity="error" text="Este campo é obrigatório" ></p-message>                                
             </div>
         </div>
         <div class="ui-g-12">
@@ -59,6 +64,7 @@
             </div>
             <div class="ui-g-3">
                 <p-calendar id="fabDate" placeholder="Data de fabricação" [(ngModel)]="item.fabDate"></p-calendar>
+                <p-message  *ngIf="!item.fabDate && showError"  severity="error" text="Este campo é obrigatório" ></p-message>                
             </div>
         </div>
     </div>
@@ -66,7 +72,7 @@
         <div class="ui-dialog-buttonpane ui-helper-clearfix">
             <button *ngIf="!newItem" type="button" pButton icon="fa fa-check" (click)="confirm()" label="Excluir"></button>        
             <button type="button" pButton icon="fa fa-close" (click)="cancel()" label="Cancelar"></button>
-            <button type="button" pButton icon="fa fa-check" (click)="save()" label="Salvar"></button>
+            <button type="button" pButton icon="fa fa-check" (click)="validate()" label="Salvar"></button>
         </div>
     </p-footer>
 </div>
