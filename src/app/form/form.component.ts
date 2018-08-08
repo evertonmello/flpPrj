@@ -3,9 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import {ConfirmationService} from 'primeng/api';
 import {MessageService} from 'primeng/api';
-import {ToastModule} from 'primeng/toast';
-
-
 
 @Component({
   selector: 'form',
@@ -53,30 +50,36 @@ export class FormComponent implements OnInit {
 
   delete() {
     try {
-      this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+      var index = this.item.id
+      this.itens = this.itens.filter((val, i) => val.id != index);
+      window.localStorage['itens'] = JSON.stringify(this.itens)
+      this.item = null;
+      this.router.navigate(['/listagem']);
+      this.messageService.add({severity:'success', summary:'Sucesso!', detail:'Item excluído'});
     } catch (error) {
-      this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+      this.messageService.add({severity:'error', summary:'Ops', detail:'Algo deu errado:' + error});
     }
-    var index = this.item.id
-    this.itens = this.itens.filter((val, i) => val.id != index);
-    window.localStorage['itens'] = JSON.stringify(this.itens)
-    this.item = null;
-    this.router.navigate(['/listagem']);
-    this.messageService.add({severity:'success', summary: 'Success Message', detail:'Order submitted'});
   }
 
   save() {
-    if (!this.newItem) {
-      var index = this.item.id
-      this.itens = this.itens.filter((val, i) => val.id != index);
+    try {
+      if (!this.newItem) {
+        var index = this.item.id
+        this.itens = this.itens.filter((val, i) => val.id != index);
+      }
+  
+      this.item.id = this.itens.length;
+      this.itens.push(this.item)
+  
+      window.localStorage['itens'] = JSON.stringify(this.itens)
+      this.item = null;
+      this.router.navigate(['/listagem']);
+      this.messageService.add({severity:'success', summary:'Sucesso!', detail:'Item salvo'});
+    } catch (error) {
+      this.messageService.add({severity:'error', summary:'Ops!', detail:'Algo deu errado: ' + error});
+      
     }
-
-    this.item.id = this.itens.length;
-    this.itens.push(this.item)
-
-    window.localStorage['itens'] = JSON.stringify(this.itens)
-    this.item = null;
-    this.router.navigate(['/listagem']);
+    
   }
 
   confirm() { 

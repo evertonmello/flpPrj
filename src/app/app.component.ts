@@ -1,6 +1,5 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-root',
@@ -18,7 +17,6 @@ export class AppComponent {
   public check = false;
 
   ngOnInit() {
-        
     this.items = [{
       label: 'Menu',
       icon: 'pi-home',
