@@ -15,7 +15,7 @@ export class FormComponent implements OnInit {
               private confirmationService: ConfirmationService,private messageService:MessageService) { }
   
   selectedItem: any;
-  itens = [];
+  itens = window.localStorage['itens'] ? JSON.parse(window.localStorage['itens']) : [];
   newItem = true;
   item = {
     id: 0,
@@ -32,16 +32,18 @@ export class FormComponent implements OnInit {
     { label: 'Quilograma', value: 1 },
     { label: 'Unidade', value: 2 },
   ]
+
   ngOnInit() {    
     this.route
       .queryParams
-      .subscribe(params => {
-        if (params.item) {
-          this.item = JSON.parse(params.item)
-          this.newItem = false;
-        }
-      });
-    this.itens = window.localStorage['itens'] ? JSON.parse(window.localStorage['itens']) : [];
+      .subscribe(params => this.setUpItem(params.item));
+  }
+
+  setUpItem(item){
+    if(item) {
+        this.item = JSON.parse(item)
+        this.newItem = false;
+    }
   }
 
   cancel() {    
@@ -70,7 +72,6 @@ export class FormComponent implements OnInit {
   
       this.item.id = this.itens.length;
       this.itens.push(this.item)
-  
       window.localStorage['itens'] = JSON.stringify(this.itens)
       this.item = null;
       this.router.navigate(['/listagem']);
@@ -83,7 +84,6 @@ export class FormComponent implements OnInit {
   }
 
   confirm() { 
-       
     this.confirmationService.confirm({
         message: 'Tem certeza que deseja excluir este item?',
         accept: () => {
