@@ -24,8 +24,8 @@ export class FormComponent implements OnInit {
     amount: null,
     price: 0,
     prshbl: false,
-    valDate: new Date(),
-    fabDate: new Date()
+    valDate: null,
+    fabDate: null
   }
   value: Date;
 
@@ -103,7 +103,7 @@ export class FormComponent implements OnInit {
   validate(){      
     var save = true
     for (var property in this.item) {        
-      if(!this.item[property] && property != 'id'){
+      if(!this.item[property] && property != 'id' && property != 'prshbl'){
         save = false
       }       
     }
