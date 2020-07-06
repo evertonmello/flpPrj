@@ -8,10 +8,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private router: Router) { 
-  } 
+  constructor(private router: Router) 
+  {} 
 
-  title = 'app';
+  public title = 'app';
   public val = 0
   public items;  
   public check = false;
@@ -33,10 +33,6 @@ export class AppComponent {
 
   setPage(page){
     this.router.navigate(['/' + page]);
-  }
-
-  validate(){
-    console.log("!")
   }
 
 }

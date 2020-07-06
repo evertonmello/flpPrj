@@ -12,12 +12,12 @@ import { MessageService } from 'primeng/api';
 })
 export class FormComponent implements OnInit {
 
-  selectedItem: any;
-  itens = window.localStorage['itens'] ? JSON.parse(window.localStorage['itens']) : [];
-  newItem = true; 
-  showError = false; 
-  form:FormGroup;
-  item = {
+  public selectedItem: any;
+  public itens = window.localStorage['itens'] ? JSON.parse(window.localStorage['itens']) : [];
+  public newItem = true; 
+  public showError = false; 
+  public form:FormGroup;
+  public item = {
     id: 0,
     name: '',
     unit: '',
@@ -27,8 +27,7 @@ export class FormComponent implements OnInit {
     valDate: null,
     fabDate: null
   }
-  value: Date;
-
+  public value: Date;
   public units = [
     { label: 'Litro', value: 'Litro' },
     { label: 'Quilograma', value: 'Quilograma' },
